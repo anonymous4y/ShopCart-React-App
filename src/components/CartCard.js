@@ -1,10 +1,13 @@
+import { useCart } from "../context/CartContext"
+
+export const CartCard = ({ product }) => {
+
+    const { removeFromCart } = useCart()
+    const { name, price, image } = product
 
 
-export const CartCard = ({ prod }) => {
-    const { id, name, price, image } = prod
     return (
-        <div className='w-full m-auto'>
-
+        <div className='w-full m-auto sm:mx-6'>
             <div className='flex items-center flex-wrap p-3 my-4 w-full border-b-2 border-l border-r rounded'>
                 <div className="w-20 sm:w-36">
                     <img src={image} alt="cartimage" />
@@ -16,11 +19,9 @@ export const CartCard = ({ prod }) => {
                     <p className='font-bold text-gray-900 text-lg'>${price}</p>
                 </div>
                 <div className="ml-40 sm:m-0">
-                    <button className='font-bold bg-red-500 rounded py-1 px-3.5 sm:py-2 sm:px-4 text-white hover:cursor-pointer hover:bg-red-700'>Remove</button>
+                    <button className='font-bold bg-red-500 rounded py-1 px-3.5 sm:py-2 sm:px-4 text-white hover:cursor-pointer hover:bg-red-700' onClick={() => removeFromCart(product)}>Remove</button>
                 </div>
             </div>
-
-
         </div>
     )
 }

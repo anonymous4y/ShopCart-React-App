@@ -2,9 +2,12 @@ import { Link, NavLink } from "react-router-dom"
 import Logo from '../assets/logo.png'
 import { useState } from "react"
 import '../App.css'
+import { useCart } from "../context/CartContext"
 
 
 export const Header = () => {
+
+    const { cartList } = useCart()
 
     const [hidden, setHidden] = useState(true)
 
@@ -13,8 +16,8 @@ export const Header = () => {
 
 
     return (
-        <header>
-            <nav className="bg-white border-gray-200 border-b ">
+        <header className="sm:mx-10">
+            <nav className="bg-white border-gray-200 border-b rounded">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <Link to="https://flowbite.com/" className="flex items-center">
                         <img src={Logo} className="h-8 mr-3" alt="Flowbite Logo" />
@@ -38,7 +41,7 @@ export const Header = () => {
                         <h1 className="hidden sm:font-medium">Cart: 2</h1>
                     </div>
                     <div id="cart">
-                        <h1 className="font-medium">Cart: 2</h1>
+                        <span className="font-medium">Cart: {cartList.length}</span>
                     </div>
                 </div>
             </nav>
